@@ -1,21 +1,4 @@
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>UniMRG</title>
-<link rel="icon" type="image/png" href="static/images/favicon.png">
-<link href="style.css" rel="stylesheet">
-</head>
-
-
-<body>
-<div class="content">
-  <h1 class="paper-title">
-    <img class="paper-title-logo" src="fig/logo.png" alt="logo">
-    <span class="paper-title-text">
-      Generation Enhances Understanding in Unified Multimodal <br> Models via Multi-Representation Generation
-    </span>
-  </h1>
-  <!-- <h1><span><img src="src/img/pia.png" style="height: 72px;"></span><strong> :Your Personalized Image Animator <br> via Plug-and-Play Modules in Text-to-Image Models</strong></h1> -->
-  <p id="authors">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Generation Enhances Understanding in Unified Multimodal Models via Multi-Representation Generation"><title>UniMRG — Generation Enhances Understanding in Unified Multimodal Models via Multi-Representation Generation</title><link rel="icon" href="fig/logo.png"><link rel="stylesheet" href="preview.css"><link rel="stylesheet" href="reference.css"></head><body class="unimrg"><a href="#overview" class="skip">Skip to content</a><nav class="nav"><a class="brand" href="#"><span class="brand-symbol">◈</span>UniMRG</a><div class="nav-links"><a href="#overview">Overview</a><a href="#method">Method</a><a href="#results">Results</a><a href="#citation">Citation</a></div><a class="nav-paper" href="https://arxiv.org/abs/2601.21406" target="_blank" rel="noopener">Paper ↗</a></nav><main><header class="hero"><div class="hero-meta"><span class="venue">ICML 2026</span><span>Unified multimodal learning</span></div><h1>Generation Enhances Understanding<br> in Unified Multimodal Models via<br> <span>Multi-Representation Generation</span></h1><p class="hero-summary">Pixel, depth, and segmentation.<br> Generation as a path to richer visual understanding.</p><div class="authors">
     <span class="author-names">
     Zihan Su<sup>1 2&dagger;*</sup>
     Hongyang Wei<sup>1*</sup>
@@ -37,126 +20,39 @@
         * Equal contribution
         &Dagger; Project lead
       </span>
-    </p>
-
-        <!-- <div style="text-align: center;">
-          <a target="_blank" href="https://www.tsinghua.edu.cn/">
-          <img src="fig/thu.png" alt="Institution 1" style="width: auto; height: 70px; margin-right: 20px;"></a>
-          <a target="_blank" href="https://arc.tencent.com/zh/index">
-          <img src="fig/ARC.png" alt="Institution 2" style="width: auto; height: 70px;"></a>
-        </div> -->
-
-        <style>
-          /* Authors vs affiliations */
-          #authors .author-names {
-            font-weight: 800;
-            color: #163b76;
-          }
-          #authors .author-affiliations {
-            font-weight: 400;
-            color: #444;
-          }
-
-          /* 定义一个名为.link-button的类，用于样式化链接按钮 */
-          .link-button {
-            display: inline-block; /* 使元素以内联块的形式显示 */
-            padding: 6px 10px; /* 内边距，垂直8px，水平16px */
-            margin: 8px; /* 外边距，四周均为4px */
-            border: 2px solid #007bff; /* 边框，宽度1px，样式实线，颜色#007bff */
-            border-radius: 7px; /* 边框圆角，半径5px */
-            text-decoration: none; /* 移除文本装饰（如下划线） */
-            font-weight: bold; /* 字体加粗 */
-            color: #007bff; /* 文字颜色 */
-            transition: background-color 0.3s, color 0.3s; /* 背景颜色和文字颜色的过渡效果，持续时间0.3秒 */
-          }
-          /* 当鼠标悬停在.link-button上时的样式 */
-          .link-button:hover {
-            background-color: #007bff; /* 背景颜色 */
-            color: white; /* 文字颜色 */
-          }
-          /* 定义.link-button内部的i标签样式 */
-          .link-button i {
-            margin-right: 8px; /* 右外边距，8px */
-          }
-        </style>
-        
-        <div style="text-align: center;">
-          <a href="https://arxiv.org/abs/2601.21406" target="_blank" class="link-button">
-            <i class="fas fa-file-alt"></i> <img src="fig/arxiv.png" alt="arxiv", style="width: 16px;"> Paper</a>
-          <a href="https://github.com/Zihan-Su/UniMRG" target="_blank" class="link-button">
-            <i class="fab fa-github"></i> <img src="fig/github.png" alt="github", style="width: 16px;"> Code</a>
-        </div>
-
-
-</div>
-
-
-<div class="content">
-  <h2 style="text-align:center;"><strong>Abstract</strong></h2>
-  <p>Unified Multimodal Models (UMMs) integrate both visual understanding and generation within a single framework. Their ultimate aspiration is to create a cycle where <em>understanding and generation mutually reinforce each other</em>. While recent post-training methods have successfully leveraged understanding to enhance generation, the reverse direction of utilizing generation to improve understanding remains largely unexplored. In this work, we propose <strong>UniMRG</strong> (<strong>Uni</strong>fied <strong>M</strong>ulti-<strong>R</strong>epresentation <strong>G</strong>eneration), a simple yet effective architecture-agnostic post-training method. UniMRG enhances the understanding capabilities of UMMs by incorporating auxiliary generation tasks. Specifically, we train UMMs to generate multiple intrinsic representations of input images, namely <em>pixel</em> (reconstruction), <em>depth</em> (geometry), and <em>segmentation</em> (structure), alongside standard visual understanding objectives. By synthesizing these diverse representations, UMMs capture complementary information regarding appearance, spatial relations, and structural layout. Consequently, UMMs develop a deeper and more comprehensive understanding of visual inputs. Extensive experiments across diverse UMM architectures demonstrate that our method notably enhances fine-grained perception, reduces hallucinations, and improves spatial understanding, while simultaneously boosting generation capabilities.</p>
-    <img src="fig/Application.png" class="teaser-gif" style="width:100%;">
-  </div>
-
-
-<div class="content">
-    <h2 style="text-align:center;"><strong>Unified Multi-Representation Generation</strong></h2>
-    <p><b>Overview of UniMRG.</b> 
+    </div><div class="actions"><a class="button primary" href="https://arxiv.org/abs/2601.21406" target="_blank" rel="noopener">Paper <span>↗</span></a><a class="button" href="https://github.com/Zihan-Su/UniMRG" target="_blank" rel="noopener">Code <span>↗</span></a><a class="text-link" href="#results">Explore results ↓</a></div><div class="highlights"><div><strong>Pixel</strong><p>Appearance</p><small>Image reconstruction</small></div><div><strong>Depth</strong><p>Geometry</p><small>Spatial relations</small></div><div><strong>Segmentation</strong><p>Structure</p><small>Region partitions</small></div></div></header><div class="feature"><div class="feature-label"><span>Generation → understanding</span><span>01 / The idea</span></div><h2>Pixel. Depth. Segmentation.</h2><p>Multiple representations. A deeper understanding.</p><figure class="figure hero-figure"><button class="expand" aria-label="Enlarge figure" title="Enlarge figure">↗</button><img src="fig/Application.png" alt="Generation as an auxiliary task for visual understanding." loading="lazy"><figcaption>Generation as an auxiliary task for visual understanding.</figcaption></figure></div><section id="overview" class="section"><header class="section-heading"><span class="idea-label">The idea</span><div><h2>Generation helps models<br>understand what they see.</h2></div></header><div class="abstract"><p>Unified multimodal models can both understand and generate images. Yet using generation to improve understanding remains less explored.</p><p><strong>UniMRG trains models to generate pixels, depth maps, and segmentation maps alongside visual understanding tasks.</strong> These complementary signals improve fine-grained perception, reduce hallucinations, and strengthen spatial understanding.</p><a class="abstract-link" href="https://arxiv.org/abs/2601.21406" target="_blank" rel="noopener">Read the full abstract ↗</a></div></section><section id="method" class="section"><header class="section-heading"><span class="section-index">02</span><div><h2>One model, complementary representations</h2></div></header><figure class="figure "><button class="expand" aria-label="Enlarge figure" title="Enlarge figure">↗</button><img src="fig/pipeline.png" alt="Overview of UniMRG. 
+      The input image is fed into the visual understanding encoder, and the UMM is jointly trained on four tasks:
+      (1) Image reconstruction: reconstructin" loading="lazy"><figcaption><b>Overview of UniMRG.</b> 
       The input image is fed into the visual understanding encoder, and the UMM is jointly trained on four tasks:<br>
       (1) <em>Image reconstruction</em>: reconstructing the input image to enhance generation capabilities.<br>
       (2) <em>Image-to-depth</em>: generating depth maps to learn geometric cues and spatial relations.<br>
       (3) <em>Image-to-segmentation</em>: generating segmentation maps to learn structural cues and region partitions.<br>
       (4) <em>Image understanding</em>: performing standard vision-language understanding tasks.<br>
-      The understanding encoder is updated for UMMs with a shared encoder for generation and understanding; otherwise it is frozen.</p>
-    <br>
-    <img class="summary-img" src="fig/pipeline.png" style="width:100%;"> <br>
-  </div>
-
-  <div class="content">
-    <h2 style="text-align:center;"><strong>Main Results</strong></h2>
-
-    <p style="font-size: 19px; font-style: italic; text-align: left;">
+      The understanding encoder is updated for UMMs with a shared encoder for generation and understanding; otherwise it is frozen.</figcaption></figure></section><section id="results" class="section"><header class="section-heading"><span class="section-index">03</span><div><h2>A closer look at the results</h2></div></header><div class="tabs" role="tablist" aria-label="Result category"><button role="tab" aria-selected="true" data-panel="benchmarks">Benchmarks</button><button role="tab" aria-selected="false" data-panel="generation">Generation</button><button role="tab" aria-selected="false" data-panel="understanding">Understanding</button></div><div id="benchmarks" role="tabpanel"><figure class="figure "><button class="expand" aria-label="Enlarge figure" title="Enlarge figure">↗</button><img src="fig/main_table.png" alt="
+      Comparison of UniMRG with other post-training methods for UMMs.
+       The green row shows the Gain (↑) over the base model. SFT denotes supervised fine-tuning using only th" loading="lazy"><figcaption>
       <b>Comparison of UniMRG with other post-training methods for UMMs.</b>
        The green row shows the Gain (↑) over the base model. SFT denotes supervised fine-tuning using only the visual understanding loss.
-    </p>
-  
-    <img src="fig/main_table.png" class="teaser-gif" style="width:100%;">
-
-    <br>
-  
-    <p style="font-size: 19px; font-style: italic; text-align: left;">
+    </figcaption></figure><figure class="figure "><button class="expand" aria-label="Enlarge figure" title="Enlarge figure">↗</button><img src="fig/compare.png" alt="
+      Comparison with state-of-the-arts on visual understanding benchmarks. 
+       Our model is OpenUni post-trained with UniMRG.
+    " loading="lazy"><figcaption>
       <b>Comparison with state-of-the-arts on visual understanding benchmarks.</b> 
        Our model is OpenUni post-trained with UniMRG.
-    </p>
-    <img src="fig/compare.png" class="teaser-gif" style="width:100%;">
-    <br>
-  
-    <p style="font-size: 19px; font-style: italic; text-align: left;">
+    </figcaption></figure></div><div id="generation" role="tabpanel" hidden><figure class="figure "><button class="expand" aria-label="Enlarge figure" title="Enlarge figure">↗</button><img src="fig/generation.png" alt="
+      Qualitative generation results.
+       UMMs post-trained with UniMRG better follow prompts involving multiple objects, spatial relationships, and complex attributes.
+    " loading="lazy"><figcaption>
       <b>Qualitative generation results.</b>
        UMMs post-trained with UniMRG better follow prompts involving multiple objects, spatial relationships, and complex attributes.
-    </p>
-    <img src="fig/generation.png" class="teaser-gif" style="width:100%;">
-    <br>
-
-    <p style="font-size: 19px; font-style: italic; text-align: left;">
+    </figcaption></figure></div><div id="understanding" role="tabpanel" hidden><figure class="figure "><button class="expand" aria-label="Enlarge figure" title="Enlarge figure">↗</button><img src="fig/understand.png" alt="
+      Qualitative understanding results.
+       UMMs post-trained with UniMRG exhibit improved fine-grained perception, reduced hallucinations, and enhanced spatial understanding." loading="lazy"><figcaption>
       <b>Qualitative understanding results.</b>
        UMMs post-trained with UniMRG exhibit improved fine-grained perception, reduced hallucinations, and enhanced spatial understanding.
-    </p>
-    <img src="fig/understand.png" class="teaser-gif" style="width:100%;">
-    <br>
-  </div>
-  
-
-
-
-<div class="content">
-  <h2 style="text-align:center;"><strong>BibTex</strong></h2>
-  <pre><code>@article{su2026generation,
+    </figcaption></figure></div></section><section id="citation" class="section"><header class="section-heading"><span class="section-index">04</span><div><h2>Cite this work</h2></div></header><div class="citation"><button id="copy-citation" class="copy">Copy BibTeX</button><pre><code>@article{su2026generation,
   title={Generation Enhances Understanding in Unified Multimodal Models via Multi-Representation Generation},
   author={Su, Zihan and Wei, Hongyang and Cen, Kangrui and Wang, Yong and Chen, Guanhua and Yuan, Chun and Chu, Xiangxiang},
   journal={arXiv preprint arXiv:2601.21406},
   year={2026}
-}</code></pre>
-</div>
-
-
-</html>
+}</code></pre><span id="copy-status" role="status"></span></div></section></main><footer><a class="footer-brand" href="#">UniMRG <span>↑</span></a><p>ICML 2026 · <a href="https://zihan-su.github.io/">Zihan Su</a></p><a href="https://zihan-su.github.io/">Zihan Su’s homepage ↗</a></footer><dialog id="lightbox"><button id="close-lightbox" aria-label="Close enlarged figure">Close ×</button><img alt="Enlarged paper figure"></dialog><script src="preview.js"></script></body></html>
